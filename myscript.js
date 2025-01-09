@@ -25,9 +25,15 @@ async function fetchQuestions(){
 
 function changeContent(data){
 
-  questionElem.innerHTML = `${data[0].question}`;
+  questionElem.innerHTML = "Question:" + data.results[0].question;
 
-  answerElem.innerHTML = `${data[0].correct_answer}` + `${data[0].incorrect_answers}`;
+  answerElem.innerHTML = "Answers:" + data.results[0].correct_answer;
+
+  for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
+    answerElem.innerHTML += data.results[0].incorrect_answers[i] + " ";
+}
+
+
 
 }
 
