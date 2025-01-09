@@ -1,0 +1,47 @@
+body{
+    display: grid;
+    grid-template-areas: 
+    'title title title title'
+    'myth history celebrities computers';
+    margin: 0;
+    color: #e2e4e9;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#title{
+    grid-area: title;
+    color: #071652;
+    font-size: 3em;
+}
+
+.title{
+    font-size: 2em;
+}
+
+#mTitle, #hTitle, #ceTitle, #coTitle, .qs{
+    background-color: #072476;
+    margin: 1rem 5rem;
+    padding: 3rem 0;
+    border-radius: 5px;
+}
+
+.qs:hover{
+    background-color: #2f4881;
+}
+
+#mythology{
+    grid-area: myth;
+}
+
+#history{
+    grid-area: history;
+}
+
+#celebrities{
+    grid-area: celebrities;
+}
+
+#computers{
+    grid-area: computers;
+}
