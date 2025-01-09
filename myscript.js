@@ -27,10 +27,10 @@ function changeContent(data){
 
   questionElem.innerHTML = "Question:" + data.results[0].question;
 
-  answerElem.innerHTML = "Answers:" + data.results[0].correct_answer + " ";
+  answerElem.innerHTML = "Answers:" + data.results[0].correct_answer;
 
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
-    answerElem.innerHTML += data.results[0].incorrect_answers[i] + " ";
+    answerElem.innerHTML += " " + data.results[0].incorrect_answers[i] + " ";
 }
 
 

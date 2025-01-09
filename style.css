@@ -45,3 +45,7 @@ body{
 #computers{
     grid-area: computers;
 }
+
+#question, #answers{
+    color: black;
+}
