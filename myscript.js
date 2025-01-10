@@ -17,6 +17,7 @@ async function fetchQuestions(){
         console.log(data);
         
         changeContent(data);
+        fetchImages(data);
 
       } catch (error) {
         console.error('Error fetching activity:', error);
@@ -33,7 +34,31 @@ function changeContent(data){
     answerElem.innerHTML += " " + data.results[0].incorrect_answers[i] + " ";
 }
 
+}
 
+const headers = {
+    "Authorization": "nSbK5mBbGa4GICHuTLoyAjx95K5fsPXTHBN8O9Jtu2eJTgRpHwwgXFQJ"
+};
+
+async function fetchImages(data){
+
+  const search = data.results[0].correct_answer;
+
+  const url = "https://api.pexels.com/v1/search?per_page=1&query=" + search;
+
+  try {
+    const response = await fetch(url, { headers });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+} catch (error) {
+    console.error("Error fetching data:", error);
+}
 
 }
 
