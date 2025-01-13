@@ -16,7 +16,7 @@ async function fetchQuestions(){
 
         console.log(data);
         
-        changeContent(data);
+        updateQuestions(data);
         fetchImages(data);
 
       } catch (error) {
@@ -24,7 +24,7 @@ async function fetchQuestions(){
       }
 }
 
-function changeContent(data){
+function updateQuestions(data){
 
   questionElem.innerHTML = "Question:" + data.results[0].question;
 
@@ -56,9 +56,16 @@ async function fetchImages(data){
     const data = await response.json();
     console.log(data);
     return data;
+    updateImages(data);
+
 } catch (error) {
     console.error("Error fetching data:", error);
 }
 
+}
+
+function updateImages(data){
+  var elemImg = document.createElement("img");
+  elemImg.src = data.photos.src[0];
 }
 
