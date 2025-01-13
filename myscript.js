@@ -56,12 +56,11 @@ async function fetchImages(data){
     const data = await response.json();
     console.log(data);
     return data;
-    updateImages(data);
 
 } catch (error) {
     console.error("Error fetching data:", error);
 }
-
+    updateImages(data);
 }
 
 function updateImages(data){
