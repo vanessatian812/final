@@ -55,20 +55,19 @@ async function fetchImages(data){
 
     const data = await response.json();
     console.log(data);
+    updateImages(data);
     return data;
 
-} catch (error) {
+  } catch (error) {
     console.error("Error fetching data:", error);
-}
-    updateImages(data);
+  }
+
 }
 
 function updateImages(data){
-  console.log("hello");
   var elemDiv = document.getElementById("div")
   var elemImg = document.createElement("img");
   elemImg.src = data.photos[0].src.original;
   elemDiv.appendChild(elemImg);
-
 }
 
