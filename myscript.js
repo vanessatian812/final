@@ -65,7 +65,10 @@ async function fetchImages(data){
 
 function updateImages(data){
   console.log("hello");
+  var elemDiv = document.getElementById("div")
   var elemImg = document.createElement("img");
-  elemImg.src = data.photos.src[0];
+  elemImg.src = data.photos[0].src.original;
+  elemDiv.appendChild(elemImg);
+
 }
 
