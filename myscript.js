@@ -1,7 +1,4 @@
 window.onload = function(){
-
-  questionElem = document.getElementById("question");
-  answerElem = document.getElementById("answers");
     fetchQuestions();
 }
 
@@ -24,16 +21,21 @@ async function fetchQuestions(){
       }
 }
 
+
 function updateQuestions(data){
+  
+  var elemDiv = document.getElementById("lightbox");
+  var elemQuestion = document.getElementById("quest");
+  var elemAnswer = document.createElement("p");
 
-  questionElem.innerHTML = "Question:" + data.results[0].question;
-
-  answerElem.innerHTML = "Answers:" + data.results[0].correct_answer;
+  elemQuestion.innerHTML = "Question:" + data.results[0].question;
+  elemAnswer.innerHTML = "Answers:" + data.results[0].correct_answer;
 
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
-    answerElem.innerHTML += " " + data.results[0].incorrect_answers[i] + " ";
+    elemAnswer.innerHTML += " " + data.results[0].incorrect_answers[i] + " ";
 }
-
+  elemDiv.appendChild(elemQuestion);
+  elemDiv.appendChild(elemAnswer);
 }
 
 const headers = {
@@ -65,9 +67,16 @@ async function fetchImages(data){
 }
 
 function updateImages(data){
-  var elemDiv = document.getElementById("div")
+  var elemDiv = document.getElementById("lightbox");
   var elemImg = document.createElement("img");
-  elemImg.src = data.photos[0].src.original;
+  elemImg.src = data.photos[0].src.small;
   elemDiv.appendChild(elemImg);
 }
 
+function openLightbox(){
+  document.getElementById("lightbox").style.display = "block";  
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
+}
