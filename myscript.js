@@ -48,7 +48,7 @@ function updateQuestions(data){
   var elemAnswer = document.createElement("p");
 
 
-  elemQuestion.innerHTML = "Question:" + data.results[0].correct_answer;
+  elemQuestion.innerHTML = "Question:" + data.results[0].question;
   elemAnswer.innerHTML = "Answers:" + data.results[0].correct_answer;
 
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
