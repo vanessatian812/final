@@ -21,8 +21,30 @@ async function fetchQuestions(num){
       url = baseUrl + "&category=20&difficulty=medium&type=multiple";
     } else if (num == 4){
       url = baseUrl + "&category=20&difficulty=hard&type=multiple";
-    } else {
-      url = baseUrl;
+    } else if (num == 5){
+      url = baseUrl + "&category=23&difficulty=easy&type=multiple";
+    } else if (num == 6){
+      url = baseUrl + "&category=23&difficulty=medium&type=multiple";
+    } else if (num == 7){
+      url = baseUrl + "&category=23&difficulty=medium&type=multiple";
+    } else if (num == 8){
+      url = baseUrl + "&category=23&difficulty=hard&type=multiple";
+    } else if (num == 9){
+      url = baseUrl + "&category=26&difficulty=easy&type=multiple";
+    } else if (num == 10){
+      url = baseUrl + "&category=26&difficulty=medium&type=multiple";
+    } else if (num == 11){
+      url = baseUrl + "&category=26&difficulty=medium&type=multiple";
+    } else if (num == 12){
+      url = baseUrl + "&category=26&difficulty=hard&type=multiple";
+    } else if (num == 13){
+      url = baseUrl + "&category=18&difficulty=easy&type=multiple";
+    } else if (num == 14){
+      url = baseUrl + "&category=18&difficulty=medium&type=multiple";
+    } else if (num == 15){
+      url = baseUrl + "&category=18&difficulty=medium&type=multiple";
+    } else if (num == 16){
+      url = baseUrl + "&category=18&difficulty=hard&type=multiple";
     }
 
     try {
