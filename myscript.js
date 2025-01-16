@@ -2,21 +2,34 @@ window.onload = function(){
     fetchQuestions();
 }
 
-async function fetchQuestions(){
+function openLightbox(num){
+  document.getElementById("lightbox").style.display = "block";
 
-    let url = "https://opentdb.com/api.php?amount=10";
-    let mythUrl = "https://opentdb.com/api.php?amount=20&category=20&type=multiple";
+  fetchQuestions(num);  
+}
+
+async function fetchQuestions(num){
+
+    let url = "";
+    let baseUrl = "https://opentdb.com/api.php?amount=1";
+
+    if (num == 1){
+      url = baseUrl + "&category=20&difficulty=easy&type=multiple";
+    } else if (num == 2){
+      url = baseUrl + "&category=20&difficulty=medium&type=multiple";
+    } else if (num == 3){
+      url = baseUrl + "&category=20&difficulty=medium&type=multiple";
+    } else if (num == 4){
+      url = baseUrl + "&category=20&difficulty=hard&type=multiple";
+    } else {
+      url = baseUrl;
+    }
 
     try {
         const response = await fetch(url);
         const data = await response.json();
 
-        const mythResponse = await fetch(mythUrl);
-        const mythData = await mythResponse.json();
-
         console.log(data);
-        console.log(mythData);
-
 
         updateQuestions(data);
         fetchImages(data);
@@ -29,11 +42,13 @@ async function fetchQuestions(){
 
 function updateQuestions(data){
   
-  var elemDiv = document.getElementById("lightbox");
+  var elemLight = document.getElementById("lightbox");
+  var elemDiv = document.createElement("div");
   var elemQuestion = document.getElementById("quest");
   var elemAnswer = document.createElement("p");
 
-  elemQuestion.innerHTML = "Question:" + data.results[0].question;
+
+  elemQuestion.innerHTML = "Question:" + data.results[0].correct_answer;
   elemAnswer.innerHTML = "Answers:" + data.results[0].correct_answer;
 
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
@@ -41,6 +56,7 @@ function updateQuestions(data){
 }
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
+  elemLight.appendChild(elemDiv);
 }
 
 const headers = {
@@ -76,10 +92,6 @@ function updateImages(data){
   var elemImg = document.createElement("img");
   elemImg.src = data.photos[0].src.small;
   elemDiv.appendChild(elemImg);
-}
-
-function openLightbox(){
-  document.getElementById("lightbox").style.display = "block";  
 }
 
 function closeLightbox(){
