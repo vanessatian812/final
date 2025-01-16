@@ -5,15 +5,18 @@ body{
     'myth history'
     'celebrities computers';
     margin: 0;
-    color: #e2e4e9;
+    background-color: #0a0d18;
+    color: #CCA128;
     text-align: center;
     font-size: 1.5em;
+    font-family: 'Candal';
 }
 
 #title{
     grid-area: title;
-    color: #071652;
+    color: #CCA128;
     font-size: 3em;
+    font-family: 'Erica One';
 }
 
 .title{
@@ -74,19 +77,19 @@ body{
         'title title title title'
         'myth history celebrities computers';
         margin: 0;
-        color: #e2e4e9;
+        color: #CCA128;
         text-align: center;
         font-size: 1.5em;
     }
     
     #title{
         grid-area: title;
-        color: #071652;
+        color: #CCA128;
         font-size: 3em;
     }
     
     .title{
-        font-size: 2em;
+        font-size: 1.25em;
     }
     
     #mTitle, #hTitle, #ceTitle, #coTitle, .qs{

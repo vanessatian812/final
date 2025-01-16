@@ -5,14 +5,19 @@ window.onload = function(){
 async function fetchQuestions(){
 
     let url = "https://opentdb.com/api.php?amount=10";
-    //let url = "questions.json";
+    let mythUrl = "https://opentdb.com/api.php?amount=20&category=20&type=multiple";
 
     try {
         const response = await fetch(url);
         const data = await response.json();
 
+        const mythResponse = await fetch(mythUrl);
+        const mythData = await mythResponse.json();
+
         console.log(data);
-        
+        console.log(mythData);
+
+
         updateQuestions(data);
         fetchImages(data);
 
