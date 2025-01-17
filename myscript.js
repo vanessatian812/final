@@ -69,6 +69,7 @@ function updateQuestions(data){
   var elemQuestion = document.getElementById("quest");
   var elemAnswer = document.createElement("p");
 
+  elemDiv.innerHTML = "";
 
   elemQuestion.innerHTML = "Question:" + data.results[0].question;
   elemAnswer.innerHTML = "Answers:" + data.results[0].correct_answer;
