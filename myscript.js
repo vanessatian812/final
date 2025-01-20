@@ -67,19 +67,25 @@ function updateQuestions(data){
   var elemLight = document.getElementById("lightbox");
   var elemDiv = document.createElement("div");
   var elemQuestion = document.getElementById("quest");
-  var elemAnswer = document.createElement("p");
+  var elemAnswer = document.createElement("button");
+  var xIcon = document.createElement("h1");
 
-  elemDiv.innerHTML = "";
+  elemLight.innerHTML = "";
 
-  elemQuestion.innerHTML = "Question:" + data.results[0].question;
-  elemAnswer.innerHTML = "Answers:" + data.results[0].correct_answer;
+  xIcon.innerHTML = "x";
+  elemQuestion.innerHTML = data.results[0].question;
+  elemAnswer.innerHTML = data.results[0].correct_answer;
 
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
-    elemAnswer.innerHTML += " " + data.results[0].incorrect_answers[i] + " ";
+    var elemIncAnswer = document.createElement("button");
+    elemIncAnswer.innerHTML = data.results[0].incorrect_answers[i];
 }
+
+  elemDiv.appendChild(xIcon);
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
   elemLight.appendChild(elemDiv);
+  xIcon.onclick = closeLightbox();
 }
 
 const headers = {
