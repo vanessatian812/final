@@ -85,7 +85,7 @@ function updateQuestions(data){
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
   elemLight.appendChild(elemDiv);
-  xIcon.onclick = closeLightbox();
+  xIcon.onclick = '"closeLightbox()"';
 }
 
 const headers = {
