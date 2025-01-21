@@ -151,11 +151,11 @@ body{
         left: 0;
         width: 100%;
         height: 100%;
+        font-size: 1.5em;
     }
     
     #lightbox p{
         width: 100%;
-        font-size: 1.5em;
     }
     
     #x{
