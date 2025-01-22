@@ -1,6 +1,30 @@
 window.onload = function(){
-    fetchQuestions();
+    //fetchQuestions();
 }
+
+// handle install prompt
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const installButton = document.getElementById('installButton');
+  installButton.style.display = 'block';
+
+  installButton.addEventListener('click', () => {
+    installButton.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+});                    
 
 function openLightbox(num){
   document.getElementById("lightbox").style.display = "block";
@@ -49,8 +73,11 @@ async function fetchQuestions(num){
 
     try {
         const response = await fetch(url);
-        const data = await response.json();
 
+        console.log(url);
+        console.log(response);
+        
+        const data = await response.json();
         console.log(data);
 
         updateQuestions(data);
@@ -78,10 +105,11 @@ function updateQuestions(data){
 
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
     var elemIncAnswer = document.createElement("button");
-    elemIncAnswer.innerHTML = data.results[0].incorrect_answers[i];
+    elemIncAnswer.innerHTML += data.results[0].incorrect_answers[i];
 }
 
   elemDiv.appendChild(xIcon);
+  elemDiv.appendChild(elemIncAnswer);
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
   elemLight.appendChild(elemDiv);
