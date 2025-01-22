@@ -82,6 +82,13 @@ body{
     color: #ffffff;
 }
 
+button{
+    width: 6vw;
+    height: 6vh;
+    background-color: #e2e4e9;
+    color: #071652;
+}
+
 @media (min-width: 1000px){
     body{
         display: grid;
