@@ -3,6 +3,7 @@ window.onload = function(){
 }
 
 // handle install prompt
+//Code taken from mdinfotech.net
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -24,7 +25,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
       deferredPrompt = null;
     });
   });
-});                    
+});           
+//End of code from mdinfotech.net         
 
 function openLightbox(num){
   document.getElementById("lightbox").style.display = "block";
@@ -105,12 +107,12 @@ function updateQuestions(data){
     elemIncAnswer.innerHTML += data.results[0].incorrect_answers[i];
 }
 
+  xIcon.onclick = '"closeLightbox()"';
   elemDiv.appendChild(xIcon);
   elemDiv.appendChild(elemIncAnswer);
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
   elemLight.appendChild(elemDiv);
-  xIcon.onclick = '"closeLightbox()"';
 }
 
 const headers = {
@@ -123,6 +125,7 @@ async function fetchImages(data){
 
   const url = "https://api.pexels.com/v1/search?per_page=1&query=" + search;
 
+  //Code taken from mdinfotech.net
   try {
     const response = await fetch(url, { headers });
 
@@ -138,6 +141,7 @@ async function fetchImages(data){
   } catch (error) {
     console.error("Error fetching data:", error);
   }
+  //End of code from mdinfotech.net
 
 }
 
