@@ -1,4 +1,4 @@
-const version = 'v5';  // change this everytime you update the service worker
+const version = 'v7';  // change this everytime you update the service worker
                           // to force the browser to also update it.
 
 self.addEventListener('install', function(event) {
@@ -20,14 +20,3 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
-
-// load the service worker
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('sw.js').then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      }, function(error) {
-        console.log('Service Worker registration failed:', error);
-      });
-    });
-  }                  
