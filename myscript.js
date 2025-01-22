@@ -73,9 +73,6 @@ async function fetchQuestions(num){
 
     try {
         const response = await fetch(url);
-
-        console.log(url);
-        console.log(response);
         
         const data = await response.json();
         console.log(data);
