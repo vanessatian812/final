@@ -64,6 +64,9 @@
       "type": "image/png",
       "purpose": "any"
     }
-    ]
+    ],
+    "short_name": "TV Maze",
+    "start_url":"/",
+    "scope":"/"
  
   }
