@@ -175,5 +175,12 @@ button{
         font-size: 0.2em;
         color: #ffffff;
     }
+
+    button{
+        width: 40vw;
+        height: 6vh;
+        background-color: #e2e4e9;
+        color: #071652;
+    }
     
 }
