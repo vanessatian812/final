@@ -113,6 +113,7 @@ function updateQuestions(data){
   elemLight.innerHTML = "";
 
   xIcon.innerHTML = "x";
+  xIcon.style.textAlign = 'left';
   elemQuestion.innerHTML = data.results[0].question;
   elemAnswer.innerHTML = data.results[0].correct_answer;
 
@@ -127,6 +128,7 @@ function updateQuestions(data){
   elemDiv.appendChild(elemAnswer);
   elemDiv.appendChild(elemIncAnswer);
   elemLight.appendChild(elemDiv);
+
 }
 
 const headers = {
@@ -167,6 +169,5 @@ function updateImages(data){
 }
 
 function closeLightbox(){
-  console.log("closing")
   document.getElementById("lightbox").style.display = "none";
 }

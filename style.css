@@ -71,13 +71,6 @@ body{
     margin-right: auto;
 }
 
-#x{
-    position: absolute;
-    top: 0;
-    right: 0;
-
-}
-
 #attribute{
     font-size: 0.3em;
     color: #ffffff;
@@ -159,12 +152,6 @@ body{
         width: 100%;
     }
     
-    #x{
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
     #attribute{
         font-size: 0.2em;
         color: #ffffff;
