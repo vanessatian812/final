@@ -121,7 +121,7 @@ function updateQuestions(data){
     elemIncAnswer.innerHTML += data.results[0].incorrect_answers[i];
 }
 
-  xIcon.onclick = '"closeLightbox()"';
+  xIcon.onclick = closeLightbox;
   elemDiv.appendChild(xIcon);
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
@@ -167,5 +167,6 @@ function updateImages(data){
 }
 
 function closeLightbox(){
+  console.log("closing")
   document.getElementById("lightbox").style.display = "none";
 }
