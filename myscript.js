@@ -107,8 +107,8 @@ function updateQuestions(data){
   var elemLight = document.getElementById("lightbox");
   var elemDiv = document.createElement("div");
   var elemQuestion = document.getElementById("quest");
-  var elemAnswer = document.createElement("button");
   var xIcon = document.createElement("h1");
+  var elemAnswer = document.createElement("button");
 
   elemLight.innerHTML = "";
 
@@ -123,9 +123,9 @@ function updateQuestions(data){
 
   xIcon.onclick = '"closeLightbox()"';
   elemDiv.appendChild(xIcon);
-  elemDiv.appendChild(elemIncAnswer);
   elemDiv.appendChild(elemQuestion);
   elemDiv.appendChild(elemAnswer);
+  elemDiv.appendChild(elemIncAnswer);
   elemLight.appendChild(elemDiv);
 }
 
