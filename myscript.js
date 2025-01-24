@@ -102,7 +102,7 @@ async function fetchQuestions(num){
 }
 
 
-function updateQuestions(data){
+/*function updateQuestions(data){
   
   var elemLight = document.getElementById("lightbox");
   var elemDiv = document.createElement("div");
@@ -117,19 +117,65 @@ function updateQuestions(data){
   elemQuestion.innerHTML = data.results[0].question;
   elemAnswer.innerHTML = data.results[0].correct_answer;
 
+  xIcon.onclick = closeLightbox;
+  elemDiv.appendChild(xIcon);
+  elemDiv.appendChild(elemQuestion);
   for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
     var elemIncAnswer = document.createElement("button");
     elemIncAnswer.innerHTML += data.results[0].incorrect_answers[i];
-}
+    elemDiv.appendChild(elemIncAnswer);
+  }
+  elemDiv.appendChild(elemAnswer);
+  elemLight.appendChild(elemDiv);
+
+}*/
+
+function updateQuestions(data) {
+  var elemLight = document.getElementById("lightbox");
+  var elemDiv = document.createElement("div");
+  var elemQuestion = document.createElement("p");
+  var xIcon = document.createElement("h1");
+
+  elemLight.innerHTML = "";
+
+  xIcon.innerHTML = "x";
+  xIcon.style.textAlign = 'right';
+  elemQuestion.innerHTML = data.results[0].question;
 
   xIcon.onclick = closeLightbox;
   elemDiv.appendChild(xIcon);
   elemDiv.appendChild(elemQuestion);
-  elemDiv.appendChild(elemAnswer);
-  elemDiv.appendChild(elemIncAnswer);
-  elemLight.appendChild(elemDiv);
 
+
+  //Code from ChatGPT
+  const answers = [...data.results[0].incorrect_answers, data.results[0].correct_answer];
+
+  for (let i = answers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [answers[i], answers[j]] = [answers[j], answers[i]]; // Swap elements
+  }
+  //End of code from ChatGPT
+
+  // Create a button for each answer
+  answers.forEach((answer) => {
+    var answerButtons = document.createElement("button");
+    answerButtons.innerHTML = answer;
+    answerButtons.onclick = () => {
+      if (answer === data.results[0].correct_answer) {
+        alert("Correct!");
+      } else {
+        alert("Incorrect!");
+      }
+    };
+    answerButtons.style.color = '#CCA128';
+    answerButtons.style.backgroundColor = '#072476';
+    answerButtons.style.margin = '1rem';
+    elemDiv.appendChild(answerButtons);
+  });
+
+  elemLight.appendChild(elemDiv);
 }
+
 
 const headers = {
     "Authorization": "nSbK5mBbGa4GICHuTLoyAjx95K5fsPXTHBN8O9Jtu2eJTgRpHwwgXFQJ"
