@@ -169,7 +169,10 @@ function updateQuestions(data) {
     };
     answerButtons.style.color = '#CCA128';
     answerButtons.style.backgroundColor = '#072476';
+    answerButtons.style.padding = '1rem';
     answerButtons.style.margin = '1rem';
+    answerButtons.style.fontSize = '0.5em';
+    elemLight.style.overflowX = 'scroll';
     elemDiv.appendChild(answerButtons);
   });
 
