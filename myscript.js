@@ -171,7 +171,7 @@ function updateQuestions(data) {
     answerButtons.style.backgroundColor = '#072476';
     answerButtons.style.padding = '1rem';
     answerButtons.style.margin = '1rem';
-    answerButtons.style.fontSize = '0.5em';
+    answerButtons.style.fontSize = '1em';
     elemLight.style.overflowX = 'scroll';
     elemDiv.appendChild(answerButtons);
   });
