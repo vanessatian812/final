@@ -113,7 +113,7 @@ function updateQuestions(data){
   elemLight.innerHTML = "";
 
   xIcon.innerHTML = "x";
-  xIcon.style.textAlign = 'left';
+  xIcon.style.textAlign = 'right';
   elemQuestion.innerHTML = data.results[0].question;
   elemAnswer.innerHTML = data.results[0].correct_answer;
 
