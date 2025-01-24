@@ -156,7 +156,6 @@ function updateQuestions(data) {
   }
   //End of code from ChatGPT
 
-  // Create a button for each answer
   answers.forEach((answer) => {
     var answerButtons = document.createElement("button");
     answerButtons.innerHTML = answer;
