@@ -1,3 +1,6 @@
+//Add points system
+//End after 400 points
+
 window.onload = function(){
     //fetchQuestions();
 }
@@ -55,36 +58,52 @@ async function fetchQuestions(num){
 
     if (num == 1){
       url = baseUrl + "&category=20&difficulty=easy&type=multiple";
+      points = 50;
     } else if (num == 2){
       url = baseUrl + "&category=20&difficulty=medium&type=multiple";
+      points = 100;
     } else if (num == 3){
       url = baseUrl + "&category=20&difficulty=medium&type=multiple";
+      points = 150;
     } else if (num == 4){
       url = baseUrl + "&category=20&difficulty=hard&type=multiple";
+      points = 200;
     } else if (num == 5){
       url = baseUrl + "&category=23&difficulty=easy&type=multiple";
+      points = 50;
     } else if (num == 6){
       url = baseUrl + "&category=23&difficulty=medium&type=multiple";
+      points = 100;
     } else if (num == 7){
       url = baseUrl + "&category=23&difficulty=medium&type=multiple";
+      points = 150;
     } else if (num == 8){
       url = baseUrl + "&category=23&difficulty=hard&type=multiple";
+      points = 200;
     } else if (num == 9){
       url = baseUrl + "&category=26&difficulty=easy&type=multiple";
+      points = 50;
     } else if (num == 10){
       url = baseUrl + "&category=26&difficulty=medium&type=multiple";
+      points = 100;
     } else if (num == 11){
       url = baseUrl + "&category=26&difficulty=medium&type=multiple";
+      points = 150;
     } else if (num == 12){
       url = baseUrl + "&category=26&difficulty=hard&type=multiple";
+      points = 200;
     } else if (num == 13){
       url = baseUrl + "&category=18&difficulty=easy&type=multiple";
+      points = 50;
     } else if (num == 14){
       url = baseUrl + "&category=18&difficulty=medium&type=multiple";
+      points = 100;
     } else if (num == 15){
       url = baseUrl + "&category=18&difficulty=medium&type=multiple";
+      points = 150;
     } else if (num == 16){
       url = baseUrl + "&category=18&difficulty=hard&type=multiple";
+      points = 200;
     }
 
     try {
@@ -93,7 +112,7 @@ async function fetchQuestions(num){
         const data = await response.json();
         console.log(data);
 
-        updateQuestions(data);
+        updateQuestions(data, score, points);
         fetchImages(data);
 
       } catch (error) {
@@ -102,35 +121,8 @@ async function fetchQuestions(num){
 }
 
 
-/*function updateQuestions(data){
-  
-  var elemLight = document.getElementById("lightbox");
-  var elemDiv = document.createElement("div");
-  var elemQuestion = document.getElementById("quest");
-  var xIcon = document.createElement("h1");
-  var elemAnswer = document.createElement("button");
-
-  elemLight.innerHTML = "";
-
-  xIcon.innerHTML = "x";
-  xIcon.style.textAlign = 'right';
-  elemQuestion.innerHTML = data.results[0].question;
-  elemAnswer.innerHTML = data.results[0].correct_answer;
-
-  xIcon.onclick = closeLightbox;
-  elemDiv.appendChild(xIcon);
-  elemDiv.appendChild(elemQuestion);
-  for (let i = 0; i<data.results[0].incorrect_answers.length; i++){
-    var elemIncAnswer = document.createElement("button");
-    elemIncAnswer.innerHTML += data.results[0].incorrect_answers[i];
-    elemDiv.appendChild(elemIncAnswer);
-  }
-  elemDiv.appendChild(elemAnswer);
-  elemLight.appendChild(elemDiv);
-
-}*/
-
-function updateQuestions(data) {
+function updateQuestions(data, score, points) {
+  var elemPoints = document.getElementById("points");
   var elemLight = document.getElementById("lightbox");
   var elemDiv = document.createElement("div");
   var elemQuestion = document.createElement("p");
@@ -162,8 +154,12 @@ function updateQuestions(data) {
     answerButtons.onclick = () => {
       if (answer === data.results[0].correct_answer) {
         alert("Correct!");
+        score = (score + points);
+        elemPoints.innerHTML = "Points: " + score;
       } else {
         alert("Incorrect!");
+        score = (score - points);
+        elemPoints.innerHTML = "Points: " + score;
       }
     };
     answerButtons.style.color = '#CCA128';
