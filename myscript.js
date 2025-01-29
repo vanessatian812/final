@@ -159,6 +159,17 @@ function updateQuestions(data, points) {
         score = (score - points);
         elemPoints.innerHTML = "Points: " + score;
       }
+      
+      if (score >= 400){
+        /*var elemBigDivs = document.getElementsByClassName("pts");
+        elemBigDivs.remove();
+        var elemBody = document.getElementById("body");
+        var winningScreen = document.createElement("p");
+        winningScreen.innerHTML = "Congrats! You've won Jeopardy!";
+        elemBody.appendChild(winningScreen);*/
+        console.log("Erm hello");
+        alert("Congrats! You've won Jeopardy!");
+      }
     };
     answerButtons.style.color = '#CCA128';
     answerButtons.style.backgroundColor = '#072476';
@@ -168,13 +179,6 @@ function updateQuestions(data, points) {
     elemLight.style.overflowX = 'scroll';
     elemDiv.appendChild(answerButtons);
   });
-
-  if (score == 400){
-    var elemBigDivs = document.getElementsByClassName("pts");
-    elemBigDivs.remove();
-    var winningScreen = document.createElement("p");
-    winningScreen.innerHTML = "Congrats! You've won Jeopardy!";
-  }
 
   elemLight.appendChild(elemDiv);
 }
