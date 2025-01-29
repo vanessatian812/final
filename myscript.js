@@ -1,13 +1,11 @@
-//Add points system
-//End after 400 points
-
 window.onload = function(){
     //fetchQuestions();
 }
-
 // handle install prompt
 //Code taken from mdinfotech.net
 let deferredPrompt;
+let score = 0;
+
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -112,7 +110,7 @@ async function fetchQuestions(num){
         const data = await response.json();
         console.log(data);
 
-        updateQuestions(data, score, points);
+        updateQuestions(data, points);
         fetchImages(data);
 
       } catch (error) {
@@ -121,7 +119,7 @@ async function fetchQuestions(num){
 }
 
 
-function updateQuestions(data, score, points) {
+function updateQuestions(data, points) {
   var elemPoints = document.getElementById("points");
   var elemLight = document.getElementById("lightbox");
   var elemDiv = document.createElement("div");
@@ -154,7 +152,7 @@ function updateQuestions(data, score, points) {
     answerButtons.onclick = () => {
       if (answer === data.results[0].correct_answer) {
         alert("Correct!");
-        score = (score + points);
+        score += points;
         elemPoints.innerHTML = "Points: " + score;
       } else {
         alert("Incorrect!");
@@ -170,6 +168,13 @@ function updateQuestions(data, score, points) {
     elemLight.style.overflowX = 'scroll';
     elemDiv.appendChild(answerButtons);
   });
+
+  if (score == 400){
+    var elemBigDivs = document.getElementsByClassName("pts");
+    elemBigDivs.remove();
+    var winningScreen = document.createElement("p");
+    winningScreen.innerHTML = "Congrats! You've won Jeopardy!";
+  }
 
   elemLight.appendChild(elemDiv);
 }
